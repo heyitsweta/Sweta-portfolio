@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sweta Pandey — Program &amp; Operations Leader</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#12293F;
+    --bg-panel:#1B3A56;
+    --bg-panel-2:#193349;
+    --grid-line:rgba(150,200,230,0.07);
+    --ink:#EAF2F8;
+    --ink-muted:#9FBBD1;
+    --ink-faint:#6E93AF;
+    --accent:#E8A33D;
+    --accent-soft:rgba(232,163,61,0.14);
+    --line:#4A7A9E;
+    --line-soft:rgba(74,122,158,0.35);
+    --radius:2px;
+    --maxw:1120px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.6;
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+  h1,h2,h3{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  a{color:inherit;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--accent);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:18px; height:1px;
+    background:var(--accent);
+    display:inline-block;
+  }
+
+  /* corner registration marks — signature detail */
+  .crosshair{
+    position:relative;
+  }
+  .crosshair::before, .crosshair::after{
+    content:"";
+    position:absolute;
+    width:14px; height:14px;
+    pointer-events:none;
+  }
+  .crosshair::before{
+    top:-1px; left:-1px;
+    border-top:1px solid var(--line);
+    border-left:1px solid var(--line);
+  }
+  .crosshair::after{
+    bottom:-1px; right:-1px;
+    border-bottom:1px solid var(--line);
+    border-right:1px solid var(--line);
+  }
+
+  /* NAV */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(18,41,63,0.9);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line-soft);
+  }
+  nav .wrap{
+    display:flex; justify-content:space-between; align-items:center;
+    height:64px;
+  }
+  nav .name{font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:16px;}
+  nav .name .dot{color:var(--accent);}
+  nav ul{list-style:none; display:flex; gap:28px; margin:0; padding:0;}
+  nav ul li{margin-right:28px;}
+  nav ul li:last-child{margin-right:0;}
+  nav a{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px; letter-spacing:0.06em; text-transform:uppercase;
+    text-decoration:none; color:var(--ink-muted);
+    transition:color .2s;
+  }
+  nav a:hover{color:var(--accent);}
+  .navtoggle{display:none; background:none; border:1px solid var(--line-soft); color:var(--ink); padding:8px 10px; border-radius:var(--radius); font-family:'IBM Plex Mono',monospace; cursor:pointer;}
+
+  /* HERO */
+  .hero{padding:96px 0 72px; position:relative; overflow:hidden;}
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:56px;
+    align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(34px, 5.2vw, 56px);
+    line-height:1.08;
+    max-width:11ch;
+  }
+  .hero h1 .accent-word{color:var(--accent);}
+  .hero-sub{
+    margin-top:22px;
+    font-size:17px;
+    color:var(--ink-muted);
+    max-width:46ch;
+  }
+  .hero-sub b{color:var(--ink); font-weight:600;}
+  .dim-callout{
+    margin-top:32px;
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    padding:10px 16px;
+    border:1px dashed var(--line);
+    border-radius:var(--radius);
+    background:var(--accent-soft);
+  }
+  .dim-callout .num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:15px;
+    color:var(--accent);
+    font-weight:500;
+  }
+  .dim-callout .lbl{
+    font-size:13px;
+    color:var(--ink-muted);
+  }
+  .cta-row{display:flex; gap:14px; margin-top:36px; flex-wrap:wrap;}
+  .cta-row > *{margin-right:14px;}
+  .cta-row > *:last-child{margin-right:0;}
+  .btn{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    letter-spacing:0.03em;
+    padding:13px 22px;
+    border-radius:var(--radius);
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    transition:transform .15s, background .15s, border-color .15s;
+  }
+  .btn-primary{background:var(--accent); color:#12293F; font-weight:500; border:1px solid var(--accent);}
+  .btn-primary:hover{transform:translateY(-1px); background:#f0b04f;}
+  .btn-ghost{border:1px solid var(--line-soft); color:var(--ink);}
+  .btn-ghost:hover{border-color:var(--accent); color:var(--accent); transform:translateY(-1px);}
+
+  .contact-strip{
+    margin-top:40px;
+    display:flex; gap:22px; flex-wrap:wrap;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--ink-faint);
+  }
+  .contact-strip > *{margin-right:22px;}
+  .contact-strip > *:last-child{margin-right:0;}
+  .contact-strip a{text-decoration:none; color:var(--ink-faint); transition:color .2s;}
+  .contact-strip a:hover{color:var(--accent);}
+
+  /* hero svg */
+  .hero-art{width:100%; height:auto;}
+
+  /* SECTION shared */
+  section{padding:64px 0; border-top:1px solid var(--line-soft);}
+  .section-head{margin-bottom:40px;}
+  .section-head h2{font-size:clamp(24px,3vw,32px); margin-top:10px;}
+
+  /* ABOUT */
+  .about-text{font-size:16.5px; color:var(--ink-muted); max-width:74ch;}
+  .about-text b{color:var(--ink); font-weight:600;}
+
+  /* ACHIEVEMENTS */
+  .achv-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--line-soft);
+    border:1px solid var(--line-soft);
+  }
+  .achv-cell{
+    background:var(--bg-panel);
+    padding:28px 24px;
+  }
+  .achv-cell .num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:30px;
+    color:var(--accent);
+    display:flex;
+    align-items:baseline;
+    gap:6px;
+  }
+  .achv-cell .tick{
+    width:8px; height:1px; background:var(--line); display:inline-block;
+  }
+  .achv-cell .desc{margin-top:8px; font-size:13.5px; color:var(--ink-muted); line-height:1.5;}
+
+  /* CASE STUDIES */
+  .case-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:22px;}
+  .case-card{
+    background:var(--bg-panel);
+    border:1px solid var(--line-soft);
+    padding:26px 24px;
+    border-radius:var(--radius);
+  }
+  .case-card h3{font-size:17px; margin-bottom:16px; color:var(--ink);}
+  .case-row{margin-bottom:12px; font-size:13.5px;}
+  .case-row .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--accent);
+    display:block; margin-bottom:4px;
+  }
+  .case-row p{margin:0; color:var(--ink-muted);}
+
+  /* EXPERIENCE TIMELINE */
+  .timeline{position:relative; padding-left:32px;}
+  .timeline::before{
+    content:"";
+    position:absolute; left:5px; top:6px; bottom:6px;
+    width:1px; background:var(--line-soft);
+  }
+  .tl-item{position:relative; padding-bottom:38px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{
+    content:"";
+    position:absolute; left:-32px; top:5px;
+    width:11px; height:11px;
+    border:1px solid var(--accent);
+    background:var(--bg);
+    border-radius:50%;
+  }
+  .tl-date{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px; letter-spacing:0.04em;
+    color:var(--ink-faint);
+    text-transform:uppercase;
+  }
+  .tl-item h3{font-size:18px; margin-top:6px;}
+  .tl-item .company{color:var(--accent); font-weight:500;}
+  .tl-item ul{margin:12px 0 0; padding-left:18px; color:var(--ink-muted); font-size:14.5px;}
+  .tl-item li{margin-bottom:6px;}
+
+  /* SKILLS */
+  .skill-group{margin-bottom:22px;}
+  .skill-group .glabel{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px; text-transform:uppercase; letter-spacing:0.08em;
+    color:var(--ink-faint); margin-bottom:10px; display:block;
+  }
+  .chip-row{display:flex; flex-wrap:wrap; gap:8px;}
+  .chip-row > *{margin-right:8px; margin-bottom:8px;}
+  .chip{
+    font-size:13px;
+    padding:6px 12px;
+    border:1px solid var(--line-soft);
+    border-radius:var(--radius);
+    color:var(--ink-muted);
+  }
+
+  /* EDUCATION */
+  .edu-list{list-style:none; margin:0; padding:0;}
+  .edu-list li{
+    padding:14px 0;
+    border-bottom:1px solid var(--line-soft);
+    display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;
+    font-size:14.5px; color:var(--ink-muted);
+  }
+  .edu-list li b{color:var(--ink); font-weight:500;}
+
+  /* FOOTER */
+  footer{padding:72px 0 48px; text-align:center;}
+  footer h2{font-size:clamp(24px,4vw,36px); max-width:16ch; margin:0 auto;}
+  footer .foot-sub{color:var(--ink-muted); margin-top:14px;}
+  footer .cta-row{justify-content:center;}
+  footer .contact-strip{justify-content:center; margin-top:44px;}
+  .foot-note{margin-top:36px; font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-faint);}
+
+  @media (max-width:860px){
+    nav ul{display:none;}
+    .navtoggle{display:inline-block;}
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-art{max-width:280px; margin:0 auto;}
+    .achv-grid{grid-template-columns:1fr 1fr;}
+    .case-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width:520px){
+    .achv-grid{grid-template-columns:1fr;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation:none !important; transition:none !important;}
+  }
+
+  .reveal{}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="name">SWETA<span class="dot">.</span>PANDEY</div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#cases">Case Studies</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="navtoggle" id="navtoggle">MENU</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Program &amp; Operations Leader</div>
+      <h1 style="margin-top:14px;">I build the structure that <span class="accent-word">doesn't exist yet.</span></h1>
+      <p class="hero-sub">
+        <b>Sweta Pandey</b> — 7+ years leading Founder's Office and 0-to-1 execution across EdTech and higher education. I get dropped into ambiguity, and I build the system that wasn't there before.
+      </p>
+      <div class="dim-callout">
+        <span class="num">↑ 30% YoY</span>
+        <span class="lbl">growth built from a blank page at Masters&rsquo; Union</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="Sweta_Pandey_MASTER_Resume.pdf" download>Download Resume ↓</a>
+        <a class="btn btn-ghost" href="mailto:sweta.pandey1911@gmail.com">Email Me</a>
+      </div>
+      <div class="contact-strip">
+        <span>Gurugram, India</span>
+        <a href="mailto:sweta.pandey1911@gmail.com">sweta.pandey1911@gmail.com</a>
+        <a href="tel:+919599765317">+91 9599765317</a>
+        <a href="https://linkedin.com/in/sweta-pandey-22999532" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </div>
+    </div>
+    <div>
+      <svg class="hero-art" viewBox="0 0 380 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Blueprint sketch transitioning into a solid structure, representing building systems from zero">
+        <defs>
+          <clipPath id="solidClip">
+            <rect x="205" y="0" width="175" height="300"/>
+          </clipPath>
+        </defs>
+        <!-- baseline -->
+        <line x1="20" y1="250" x2="360" y2="250" stroke="#4A7A9E" stroke-width="1" stroke-dasharray="2 4" opacity="0.5"/>
+        <!-- dashed sketch bars (blueprint) -->
+        <g fill="none" stroke="#6FA8C9" stroke-width="1.4" stroke-dasharray="4 4" opacity="0.85">
+          <rect x="40" y="190" width="46" height="60"/>
+          <rect x="100" y="150" width="46" height="100"/>
+          <rect x="160" y="110" width="46" height="140"/>
+          <rect x="220" y="80" width="46" height="170"/>
+          <rect x="280" y="50" width="46" height="200"/>
+        </g>
+        <!-- solid bars, clipped to right portion = "becoming real" -->
+        <g clip-path="url(#solidClip)">
+          <g fill="#1B3A56" stroke="#E8A33D" stroke-width="1.6">
+            <rect x="40" y="190" width="46" height="60"/>
+            <rect x="100" y="150" width="46" height="100"/>
+            <rect x="160" y="110" width="46" height="140"/>
+            <rect x="220" y="80" width="46" height="170"/>
+            <rect x="280" y="50" width="46" height="200"/>
+          </g>
+        </g>
+        <!-- dimension ticks -->
+        <g stroke="#E8A33D" stroke-width="1">
+          <line x1="280" y1="42" x2="280" y2="50"/>
+          <line x1="326" y1="42" x2="326" y2="50"/>
+          <line x1="280" y1="42" x2="326" y2="42"/>
+        </g>
+        <text x="288" y="34" fill="#E8A33D" font-family="IBM Plex Mono, monospace" font-size="11">0→1</text>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head crosshair" style="padding:20px;">
+      <div class="eyebrow">01 / About</div>
+      <h2>No playbook. Built one anyway.</h2>
+    </div>
+    <p class="about-text reveal">
+      I'm a program and operations leader with <b>7+ years</b> across SaaS, EdTech, and higher education. My career has a single throughline: I keep getting dropped into ambiguity — an institution that existed only on paper, a 500-person workforce with no onboarding system, a founders' office running 60+ initiatives at once — and I build the structure that wasn't there before.
+      I lead with numbers, not just instinct. <b>30% YoY growth.</b> <b>25% faster turnaround.</b> A partner network built from zero to <b>₹1.2 Cr in revenue.</b>
+      I'm not looking to maintain what already works. I want to build the thing that doesn't exist yet — and then hand over a system that outlasts me.
+    </p>
+  </div>
+</section>
+
+<section id="achievements">
+  <div class="wrap">
+    <div class="section-head crosshair" style="padding:20px;">
+      <div class="eyebrow">02 / Measurements</div>
+      <h2>Key achievements &amp; impact</h2>
+    </div>
+    <div class="achv-grid reveal">
+      <div class="achv-cell"><div class="num">30%<span class="tick"></span></div><div class="desc">YoY growth — designed and scaled a 0-to-1 operating structure from scratch at Masters&rsquo; Union.</div></div>
+      <div class="achv-cell"><div class="num">60+<span class="tick"></span></div><div class="desc">Concurrent initiatives led from the Founders&rsquo; Office, partnering directly with founders and leadership.</div></div>
+      <div class="achv-cell"><div class="num">500+<span class="tick"></span></div><div class="desc">Person workforce — redesigned onboarding end-to-end, cutting ramp-up time by 30%.</div></div>
+      <div class="achv-cell"><div class="num">25%<span class="tick"></span></div><div class="desc">Faster turnaround from KPI dashboards and sprint-based execution systems I built.</div></div>
+      <div class="achv-cell"><div class="num">₹1.2 Cr<span class="tick"></span></div><div class="desc">Revenue from a 25+ partner network, built from the ground up with no existing brand.</div></div>
+      <div class="achv-cell"><div class="num">3.85/4<span class="tick"></span></div><div class="desc">Performance rating — &ldquo;Distinctly Exceeds Expectations&rdquo; for delivery ownership and clarity.</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="cases">
+  <div class="wrap">
+    <div class="section-head crosshair" style="padding:20px;">
+      <div class="eyebrow">03 / Case Studies</div>
+      <h2>Situation. Action. Impact.</h2>
+    </div>
+    <div class="case-grid reveal">
+      <div class="case-card">
+        <h3>Building an Institution from Zero</h3>
+        <div class="case-row"><span class="tag">Situation</span><p>Joined Masters&rsquo; Union at its pre-launch, paper-only stage — no brand, no systems, no students.</p></div>
+        <div class="case-row"><span class="tag">Action</span><p>Built the end-to-end operating structure from scratch across marketing, academic, and operations.</p></div>
+        <div class="case-row"><span class="tag">Impact</span><p>Delivered 30% YoY growth, taking the institution from a concept on paper to a recognized brand.</p></div>
+      </div>
+      <div class="case-card">
+        <h3>Scaling a 500+ Person Workforce</h3>
+        <div class="case-row"><span class="tag">Situation</span><p>Onboarding was unstandardized, causing slow ramp-up and inconsistent quality at scale.</p></div>
+        <div class="case-row"><span class="tag">Action</span><p>Redesigned onboarding end-to-end; introduced KPI tracking and AI-driven reporting to catch blockers early.</p></div>
+        <div class="case-row"><span class="tag">Impact</span><p>Cut ramp-up time by 30%, sustaining a 3.85/4.0 rating for delivery ownership.</p></div>
+      </div>
+      <div class="case-card">
+        <h3>Running 60+ Initiatives at Once</h3>
+        <div class="case-row"><span class="tag">Situation</span><p>Founders needed one point of coordination across a 10-member team with no unified tracking system.</p></div>
+        <div class="case-row"><span class="tag">Action</span><p>Built KPI dashboards and sprint-based planning as a repeatable execution playbook.</p></div>
+        <div class="case-row"><span class="tag">Impact</span><p>Improved turnaround time 25%, adopted as the team&rsquo;s standard going forward.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head crosshair" style="padding:20px;">
+      <div class="eyebrow">04 / Timeline</div>
+      <h2>Experience</h2>
+    </div>
+    <div class="timeline reveal">
+      <div class="tl-item">
+        <div class="tl-date">Jan 2025 — May 2026 · Remote</div>
+        <h3>Assistant Manager, People Partnering <span class="company">— Interview Kickstart</span></h3>
+        <ul>
+          <li>Owned end-to-end delivery for 15+ instructor enablement programs across multiple time zones.</li>
+          <li>Redesigned onboarding for a 500+ person instructor workforce, cutting ramp-up time by 30%.</li>
+          <li>Rated 3.85/4.0 (&ldquo;Distinctly Exceeds Expectations&rdquo;) for delivery ownership.</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Mar 2024 — Feb 2025 · Gurugram</div>
+        <h3>Growth &amp; Strategy Lead, Founders&rsquo; Office <span class="company">— Masters&rsquo; Union</span></h3>
+        <ul>
+          <li>Led a 10-member cross-functional team across 60+ concurrent initiatives.</li>
+          <li>Built KPI dashboards giving founders real-time visibility, improving turnaround 25%.</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Mar 2020 — Aug 2023 · Gurugram</div>
+        <h3>Lead, Admissions Growth &amp; Brand Marketing <span class="company">— Masters&rsquo; Union</span></h3>
+        <ul>
+          <li>Joined at the institution&rsquo;s pre-launch stage; built the operating structure from scratch.</li>
+          <li>Delivered 30% YoY growth with no existing playbook to follow.</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2018 — 2020 · New Delhi</div>
+        <h3>Admissions &amp; Outreach Consultant <span class="company">— Indian School of Business &amp; Finance</span></h3>
+        <ul>
+          <li>Managed multi-city outreach; improved conversion 20% through CRM-driven tracking.</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2017 — 2018 · Noida</div>
+        <h3>Business Development Manager <span class="company">— AIETS (Disha Publications)</span></h3>
+        <ul>
+          <li>Built a national partner network from scratch — 25+ partners, ₹1.2 Cr revenue.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head crosshair" style="padding:20px;">
+      <div class="eyebrow">05 / Toolkit</div>
+      <h2>Skills &amp; tools</h2>
+    </div>
+    <div class="reveal">
+      <div class="skill-group">
+        <span class="glabel">PM &amp; Ops</span>
+        <div class="chip-row">
+          <span class="chip">Jira</span><span class="chip">Notion</span><span class="chip">Trello</span><span class="chip">Asana</span><span class="chip">Google Workspace</span><span class="chip">Slack</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <span class="glabel">CRM &amp; Data</span>
+        <div class="chip-row">
+          <span class="chip">Salesforce</span><span class="chip">HubSpot</span><span class="chip">Merrito</span><span class="chip">Metabase</span><span class="chip">Tableau</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <span class="glabel">AI Stack</span>
+        <div class="chip-row">
+          <span class="chip">ChatGPT</span><span class="chip">Claude</span><span class="chip">Perplexity</span><span class="chip">Make (Integromat)</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <span class="glabel">Methodologies</span>
+        <div class="chip-row">
+          <span class="chip">Agile</span><span class="chip">Scrum</span><span class="chip">Kanban</span><span class="chip">OKRs</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="section-head crosshair" style="padding:20px;">
+      <div class="eyebrow">06 / Education</div>
+      <h2>Education &amp; certifications</h2>
+    </div>
+    <ul class="edu-list reveal">
+      <li><b>M.A.</b><span>University of Lucknow</span></li>
+      <li><b>B.A.</b><span>University of Delhi</span></li>
+      <li><b>Diploma, Geospatial Technology</b><span>GIS Institute</span></li>
+      <li><b>Google Project Management Professional Certificate</b><span>Coursera — in progress</span></li>
+    </ul>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="eyebrow" style="justify-content:center;">Get in touch</div>
+    <h2 style="margin-top:14px;">Let&rsquo;s build something that doesn&rsquo;t exist yet.</h2>
+    <p class="foot-sub">Open to Program Management, Operations, Founder&rsquo;s Office, and Chief of Staff roles.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="mailto:sweta.pandey1911@gmail.com">Email Me</a>
+      <a class="btn btn-ghost" href="Sweta_Pandey_MASTER_Resume.pdf" download>Download Resume ↓</a>
+    </div>
+    <div class="contact-strip">
+      <span>Gurugram, India</span>
+      <a href="mailto:sweta.pandey1911@gmail.com">sweta.pandey1911@gmail.com</a>
+      <a href="tel:+919599765317">+91 9599765317</a>
+      <a href="https://linkedin.com/in/sweta-pandey-22999532" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </div>
+    <div class="foot-note">© Sweta Pandey — Last updated 2026</div>
+  </div>
+</footer>
+
+<script>
+  // mobile nav toggle
+  const toggle = document.getElementById('navtoggle');
+  const navUl = document.querySelector('nav ul');
+  if(toggle){
+    toggle.addEventListener('click', () => {
+      const isOpen = navUl.style.display === 'flex';
+      navUl.style.display = isOpen ? 'none' : 'flex';
+      navUl.style.flexDirection = 'column';
+      navUl.style.position = 'absolute';
+      navUl.style.top = '64px';
+      navUl.style.right = '20px';
+      navUl.style.background = '#1B3A56';
+      navUl.style.padding = '16px 20px';
+      navUl.style.border = '1px solid rgba(74,122,158,0.35)';
+      navUl.style.gap = '14px';
+    });
+  }
+</script>
+
+</body>
+</html>
