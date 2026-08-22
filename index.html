@@ -236,6 +236,34 @@
   }
   .case-row p{margin:0; color:var(--ink-muted);}
 
+  /* PROJECTS */
+  .project-card{
+    background:var(--bg-panel);
+    border:1px solid var(--line-soft);
+    padding:26px 24px;
+    border-radius:var(--radius);
+    display:flex;
+    flex-direction:column;
+  }
+  .proj-tag{
+    align-self:flex-start;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--accent);
+    background:var(--accent-soft);
+    padding:4px 10px;
+    border-radius:var(--radius);
+    margin-bottom:14px;
+  }
+  .project-card h3{font-size:16.5px; margin-bottom:10px; color:var(--ink);}
+  .proj-desc{font-size:13.5px; color:var(--ink-muted); margin:0 0 16px; flex-grow:1;}
+  .proj-metric{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--accent);
+    margin-bottom:14px;
+  }
+
   /* EXPERIENCE TIMELINE */
   .timeline{position:relative; padding-left:32px;}
   .timeline::before{
@@ -306,6 +334,7 @@
     .hero-art{max-width:280px; margin:0 auto;}
     .achv-grid{grid-template-columns:1fr 1fr;}
     .case-grid{grid-template-columns:1fr;}
+    .project-grid{grid-template-columns:1fr;}
   }
   @media (max-width:520px){
     .achv-grid{grid-template-columns:1fr;}
@@ -327,6 +356,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#achievements">Achievements</a></li>
       <li><a href="#cases">Case Studies</a></li>
+      <li><a href="#projects">Projects</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -469,6 +499,71 @@
         <div class="case-row"><span class="tag">Situation</span><p>Instructor communication was fragmented across email, Slack, and DMs, creating confusion and inconsistent messaging at scale.</p></div>
         <div class="case-row"><span class="tag">Action</span><p>Launched the IK Mentor Community (IMC) as the single hub for updates, pairing a regular posting cadence with direct leadership AMAs to build trust.</p></div>
         <div class="case-row"><span class="tag">Impact</span><p>Consolidated all instructor communication into one platform, turning a scattered channel into an active community with a growing base of returning contributors.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head crosshair" style="padding:20px;">
+      <div class="eyebrow">03B / Projects</div>
+      <h2>Program &amp; Systems Work</h2>
+    </div>
+    <div class="case-grid project-grid reveal">
+      <div class="project-card">
+        <span class="proj-tag">Systems &amp; Visibility</span>
+        <h3>Centralized Onboarding Tracker</h3>
+        <div class="proj-metric">48 instructors &middot; 1 system of record</div>
+        <p class="proj-desc">Replaced scattered spreadsheets and email threads with a single real-time tracker covering the full onboarding pipeline, giving Ops, Program, and HR shared visibility and clear ownership at every handoff.</p>
+        <div class="chip-row">
+          <span class="chip">Process Design</span><span class="chip">Cross-Functional Reporting</span><span class="chip">Stakeholder Visibility</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <span class="proj-tag">Stakeholder Management</span>
+        <h3>Q4 Instructor Engagement Refresh</h3>
+        <div class="proj-metric">150+ 1:1 conversations across time zones</div>
+        <p class="proj-desc">Ran structured, individual conversations across a global instructor base to convert availability into scheduled assignments, surface friction early, and re-engage people who had quietly gone inactive.</p>
+        <div class="chip-row">
+          <span class="chip">Relationship Management</span><span class="chip">Risk Mitigation</span><span class="chip">Retention</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <span class="proj-tag">Program Governance</span>
+        <h3>Founders&rsquo; Office KPI &amp; Sprint Playbook</h3>
+        <div class="proj-metric">60+ initiatives &middot; 25% faster turnaround</div>
+        <p class="proj-desc">Designed a KPI dashboard and sprint-based planning cadence that gave founders real-time visibility across a 10-member cross-functional team, later adopted as the team&rsquo;s standard operating model.</p>
+        <div class="chip-row">
+          <span class="chip">Agile / Sprint Planning</span><span class="chip">Dashboarding</span><span class="chip">Executive Reporting</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <span class="proj-tag">Change &amp; Risk Management</span>
+        <h3>Payroll System Migration: Paycor &rarr; Rippling</h3>
+        <div class="proj-metric">Reduced escalations during a high-risk cutover</div>
+        <p class="proj-desc">Coordinated a dedicated support channel bridging instructors and HRBP Finance during a company-wide payroll system migration, resolving access and payroll queries in real time and building documentation that outlasted the transition.</p>
+        <div class="chip-row">
+          <span class="chip">Change Management</span><span class="chip">Vendor/HRIS Coordination</span><span class="chip">Documentation</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <span class="proj-tag">Continuous Improvement</span>
+        <h3>Instructor Feedback Framework</h3>
+        <div class="proj-metric">Weekly cadence &middot; monthly synthesis</div>
+        <p class="proj-desc">Built a repeatable weekly conversation model with rotating instructors, turning anecdotal feedback into comparable, trackable data and a monthly synthesis that leadership used to prioritize fixes and close the loop visibly.</p>
+        <div class="chip-row">
+          <span class="chip">Voice-of-Stakeholder</span><span class="chip">Data Synthesis</span><span class="chip">Closed-Loop Reporting</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <span class="proj-tag">Change Adoption</span>
+        <h3>Mentor Community Launch (IMC)</h3>
+        <div class="proj-metric">1 hub, replacing 3+ scattered channels</div>
+        <p class="proj-desc">Consolidated instructor communication &mdash; previously spread across email, Slack, and DMs &mdash; into a single community platform, pairing a regular update cadence with direct leadership AMAs to rebuild trust at scale.</p>
+        <div class="chip-row">
+          <span class="chip">Communication Strategy</span><span class="chip">Community Building</span><span class="chip">Leadership Alignment</span>
+        </div>
       </div>
     </div>
   </div>
